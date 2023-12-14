@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  timelapse:
+    image: timelapse:latest
+    container_name: timelapse-server
+    user: "0"
+    ports:
+      - "8100:1880"
+    restart: always
+    environment:
+      - TZ=Europe/Stockholm
+    volumes:
+      - timelapse-data:/data
+      - ./timelapse:/data/timelapse
+volumes:
+  timelapse-data:
